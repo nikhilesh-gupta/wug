@@ -9,7 +9,7 @@ import (
    "os/exec"
    "runtime"
    "flag"
-   "github.com/nikhilesh-gupta/wuf/gf/gfPatterns"
+   "github.com/nikhilesh-gupta/wug/gf/gfPatterns"
 )
 
 func waybackurls(&domain string){
