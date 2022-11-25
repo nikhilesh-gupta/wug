@@ -8,12 +8,12 @@ import (
    "os"
    "os/exec"
    "runtime"
-   "gfPatterns"
+   "flag"
+   "github.com/nikhilesh-gupta/wuf/gf/gfPatterns"
 )
 
-func waybackurls(){
-   var domain, link string
-   fmt.Scanln(&domain)
+func waybackurls(&domain string){
+   var link string
    link = "https://web.archive.org/cdx/search/cdx?url=*." + domain + "/*&output=text&fl=original&collapse=urlkey"
    resp, err := http.Get(link)
    if err != nil {
@@ -42,6 +42,12 @@ func waybackurls(){
 
 
 func main() {
-   waybackurls()
+   //Command line Flags
+   file := flag.String("f", ,"to enter data from a file")
+   domain := flag.String("d", ,"to enter domain")
+   flag.Parse()
+
+   //Calling functions
+   waybackurls(domain)
    gfPatterns()
 }
